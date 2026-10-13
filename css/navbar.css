@@ -1,0 +1,83 @@
+
+:root{
+    --purple: #6b46d9;
+    --purple-dark: #5333b8;
+    --lavender-deep: #d9d0f7;
+    --ink: #14121f;
+    --muted: #5d5a70;
+    --white:#ffffff;
+    --white-smoke:#ece9f6;
+}
+
+.topbar{
+    /* display: none; */
+    background-color: var(--white);
+    border-bottom: 1px solid var(--white-smoke);
+    font-size: 0.8rem;
+}
+.topbar-inner{
+    display: flex;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.topbar i{
+    color: var(--purple);
+    margin-right: 6px;
+
+}
+ .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--white);
+  box-shadow: 0 1px 0 #ece9f6;
+}
+ .nav-inner {
+  display: flex;
+  flex-wrap : wrap;           
+  align-items: center;
+  min-height: 70px;
+}
+
+.logo { display: flex; flex-direction: column; order: 1; }
+.logo strong { font-size: 1.5rem; color: var(--purple); line-height: 1; }
+.logo small { font-size: 0.7rem; color: var(--muted); }
+
+.nav-actions { display: flex; gap: 18px; order: 2; margin-left: auto; font-size: 1.15rem; }
+.nav-actions a:hover { color: var(--purple); }
+
+.hamburger { order: 3; margin-left: 18px; font-size: 1.4rem; cursor: pointer; }
+.menu-toggle { display: none; }
+
+.has-badge { position: relative; }
+.badge {
+  position: absolute; top: -8px; right: -10px;
+  min-width: 17px; height: 17px; padding: 0 4px;
+  border-radius: 9px;
+  background: var(--purple); color: var(--white);
+  font-size: 0.65rem; font-weight: 700; line-height: 17px; text-align: center;
+}
+
+/* Mobile menu: collapsed until the checkbox is ticked */
+.nav-menu {
+  order: 4;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+.menu-toggle:checked ~ .nav-menu { max-height: 600px; }
+
+.nav-links a { display: block; padding: 13px 0; font-weight: 500; border-bottom: 1px solid #f0eef8; }
+.nav-links a:hover, .nav-links a.active { color: var(--purple); }
+.nav-links i { font-size: 0.65rem; margin-left: 4px; }
+
+.dropdown a { padding-left: 18px; font-weight: 400; color: var(--muted); }
+
+ .hero {
+  display: grid;             /* all slides share ONE grid cell, so they overlap */
+  background: var(--lavender);
+  overflow: hidden;
+}
+

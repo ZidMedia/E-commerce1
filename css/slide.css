@@ -1,0 +1,124 @@
+.slide {
+  grid-area: 1 / 1;          /* row 1, column 1: every slide goes here */
+  opacity: 0;
+  visibility: hidden;        /* hidden slides can't be clicked */
+  animation: slide 15s infinite;
+}
+.slide-1 { animation-delay: 0s; }
+.slide-2 { animation-delay: 5s; }
+.slide-3 { animation-delay: 10s; }
+ @keyframes slide {
+  0%   { opacity: 0; visibility: hidden; }
+  5%   { opacity: 1; visibility: visible; }
+  30%  { opacity: 1; visibility: visible; }
+  35%  { opacity: 0; visibility: hidden; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+.slide-inner {
+  display: grid;
+  gap: 32px;
+  padding-top: 48px;
+  padding-bottom: 56px;
+  align-items: center;
+}
+
+ .tagline { color: var(--purple); font-weight: 700; margin-bottom: 12px; }
+.slide-text h1 { font-size: 2.6rem; line-height: 1.05; margin-bottom: 16px; }
+.desc { color: var(--muted); line-height: 1.6; max-width: 420px; margin-bottom: 26px; }
+ .btn-group { display: flex; flex-wrap: wrap; gap: 14px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 24px; border-radius: 6px;
+  font-size: 0.85rem; font-weight: 700; text-transform: uppercase;
+  transition: transform 0.2s, background 0.2s;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--purple); color: var(--white); }
+.btn-primary:hover { background: var(--purple-dark); }
+.btn-outline { border: 1px solid #c9c2e6; background: var(--white); }
+.btn-dark { background: var(--ink); color: var(--white); margin-top: 16px; }
+
+/* Product image sitting on a "platform" */
+.slide-visual { position: relative; text-align: center; }
+.slide-visual > img {
+  position: relative; z-index: 1;
+  width: auto; max-height: 340px; margin: 0 auto 28px;
+}
+.slide-visual::before {      /* the lilac platform under the product */
+  content: "";
+  position: absolute; left: 50%; bottom: 120px;   /* sits under the image */
+  transform: translateX(-50%);
+  width: 70%; height: 36px; border-radius: 50%;
+  background: var(--lavender-deep);
+}
+
+/* Floating product card */
+.product-card {
+  position: relative; z-index: 2;
+  max-width: 280px; margin: 0 auto;
+  padding: 22px; border-radius: 16px;
+  background: var(--white); text-align: left;
+  box-shadow: 0 12px 30px rgba(107, 70, 217, 0.15);
+}
+.pill {
+  display: inline-block; margin-bottom: 12px; padding: 4px 10px; border-radius: 20px;
+  background: var(--lavender); color: var(--purple); font-size: 0.7rem; font-weight: 700;
+}
+.product-card h2 { font-size: 1.3rem; margin-bottom: 6px; }
+.product-card p { color: var(--muted); font-size: 0.9rem; line-height: 1.4; margin-bottom: 16px; }
+.product-card small { display: block; color: var(--muted); font-size: 0.7rem; }
+.price { font-size: 1.7rem; color: var(--purple); }
+
+@media (prefers-reduced-motion: reduce) {
+  .slide { animation: none; }
+  .slide-1 { opacity: 1; visibility: visible; }
+}
+
+/* ============ 6. TABLET (768px+) ============ */
+@media (min-width: 768px) {
+  .topbar { display: block; }
+  .slide-text h1 { font-size: 3.4rem; }
+}
+
+/* ============ 7. DESKTOP (992px+) ============ */
+@media (min-width: 992px) {
+  .topbar span:nth-child(n+3) { display: inline; }   /* show all 4 items */
+
+  .hamburger { display: none; }
+
+  .nav-inner { flex-wrap: nowrap; }
+
+  /* Menu moves between the logo and the icons */
+  .nav-menu {
+    order: 2; flex: 1; width: auto;
+    max-height: none; overflow: visible;
+  }
+  .nav-actions { order: 3; margin-left: 0; font-size: 1.2rem; }
+
+  .nav-links { display: flex; justify-content: center; gap: 30px; }
+  .nav-links a { padding: 24px 0; border-bottom: 2px solid transparent; font-size: 0.92rem; }
+  .nav-links a.active { border-bottom-color: var(--purple); }
+
+  /* Dropdown appears on hover or keyboard focus */
+  .has-dropdown { position: relative; }
+  .dropdown {
+    display: none; position: absolute; top: 100%; left: 0; min-width: 170px;
+    background: var(--white); border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(20, 18, 31, 0.12);
+  }
+  .has-dropdown:hover .dropdown,
+  .has-dropdown:focus-within .dropdown { display: block; }
+  .dropdown a { padding: 11px 18px; border-bottom: none; }
+
+  /* Hero: text left, product right */
+  .slide-inner { grid-template-columns: 1fr 1.2fr; min-height: 540px; }
+  .slide-text h1 { font-size: 4rem; }
+  .slide-visual > img { max-height: 420px; margin-bottom: 0; }
+  .slide-visual::before { bottom: 0; width: 55%; }
+
+  .product-card {
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%); margin: 0; width: 260px;
+  }
+}

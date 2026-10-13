@@ -1,0 +1,26 @@
+
+:root{
+    --purple: #6b46d9;
+    --purple-dark: #5333b8;
+    --lavender-deep: #d9d0f7;
+    --ink: #14121f;
+    --muted: #5d5a70;
+    --white:#ffffff;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family:"DM Sans", arial, sans-serif;
+    color: var(--ink);
+
+}
+.container{
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 5%;
+}
